@@ -71,4 +71,8 @@ class knight_moves
 
   end
 
+  def within_board?(row, col)
+    row.between?(0, 7) && col.between?(0, 7)
+  end
+
 end
