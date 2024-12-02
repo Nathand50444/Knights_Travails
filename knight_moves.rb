@@ -1,5 +1,4 @@
-class Board
-  
+
   # For this project, you’ll need to use a data structure that’s similar (but not identical) to a binary tree - graphs.
   # For a good introduction on what graphs are, reference Khan Academy’s “Describing Graphs” (link below).
   # https://www.khanacademy.org/computing/computer-science/algorithms/graph-representation/a/describing-graphs
@@ -31,10 +30,40 @@ class Board
   #     [2,4]
   #     [4,3]
 
-  def initialize
+# ---------------------------------------------------------------------------------------
+
+# Breadth-first-search
+
+# Pass the target coordinate into the function i.e. function(x, y)
+
+# Establish acceptable moves from the knight by x and y values. Constant of 8 different steps
+
+# Keep track of number of moves made 
+# Keep track of (current position)
+
+# Use a map to track visited/not visited squares
+
+# Use a queue of the visited nodes
+
+# Let the head be the top of the queue and remove it from the queue
+
+# IF the head is the target coordinates then return the step
+
+# IF NOT, then process the next round which is the total of the head coords plus direction coords (a+b, c+d)
+
+# If a coord has already been visited then skip that coord
+
+# Add 1 to the number of steps 
+
+class knight_moves
+  attr_accessor :x_target, :y_target
+  
+  def initialize(x_target, y_target)
       
   # SO, if we have an 8 by 8 board there should be 64 combinations of coordinates.
 
   end
+
+  ACCEPTABLE_MOVES = [[2,1], [2,-1], [-2,1], [-2,-1], [1,2], [-1,2], [1,-2], [-1,-2]]
 
 end
