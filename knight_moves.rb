@@ -66,4 +66,9 @@ class knight_moves
 
   ACCEPTABLE_MOVES = [[2,1], [2,-1], [-2,1], [-2,-1], [1,2], [-1,2], [1,-2], [-1,-2]]
 
+  def move_to_target(x_target,y_target)
+    return nil if x_target.empty? || y_target.empty?
+
+  end
+
 end
