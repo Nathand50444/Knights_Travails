@@ -58,21 +58,22 @@
 class knight_moves
   attr_accessor :x_target, :y_target
   
-  def initialize(x_target, y_target)
+  def initialize(x_start, y_start, x_target, y_target)
       
-  # SO, if we have an 8 by 8 board there should be 64 combinations of coordinates.
+
 
   end
 
   ACCEPTABLE_MOVES = [[2,1], [2,-1], [-2,1], [-2,-1], [1,2], [-1,2], [1,-2], [-1,-2]]
 
-  def move_to_target(x_target,y_target)
+  def move_to_target(x_target, y_target)
     return nil if x_target.empty? || y_target.empty?
 
   end
 
   def within_board?(row, col)
-    row.between?(0, 7) && col.between?(0, 7)
+    row >= 0 && row < 8 && col >= 0 && col < 8
+    # An 8 by 8 board there should be 64 combinations of coordinates.
   end
 
 end
