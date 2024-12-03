@@ -34,9 +34,9 @@
 
 # Breadth-first-search
 
-# Pass the target coordinate into the function i.e. function(x, y)
+# Pass the target coordinate into the function i.e. function(x, y) /
 
-# Establish acceptable moves from the knight by x and y values. Constant of 8 different steps
+# Establish acceptable moves from the knight by x and y values. Constant of 8 different steps /
 
 # Keep track of number of moves made 
 # Keep track of (current position)
@@ -55,24 +55,28 @@
 
 # Add 1 to the number of steps 
 
-class knight_moves
-  attr_accessor :x_target, :y_target
+class KnightMoves
   
-  def initialize(x_start, y_start, x_target, y_target)
-      
-
-
+  def initialize(x_target, y_target) # x_start, y_start
+      valid_input?(x_target, y_target)
+      @current_position = [x_target, y_target]
   end
 
   ACCEPTABLE_MOVES = [[2,1], [2,-1], [-2,1], [-2,-1], [1,2], [-1,2], [1,-2], [-1,-2]]
 
-  def move_to_target(x_target, y_target)
-    return nil if x_target.empty? || y_target.empty?
+  def move_to_target
+    within_board?(@current_position)
 
   end
 
-  def within_board?(row, col)
-    row >= 0 && row < 8 && col >= 0 && col < 8
+  def valid_input?(row, col)
+    if row == nil || col == nil
+      return false
+    elsif row >= 0 && row < 8 && col >= 0 && col < 8
+      return true
+    else
+      return false
+    end
     # An 8 by 8 board there should be 64 combinations of coordinates.
   end
 
