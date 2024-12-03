@@ -70,14 +70,7 @@ class KnightMoves
   end
 
   def valid_input?(row, col)
-    if row == nil || col == nil
-      return false
-    elsif row >= 0 && row < 8 && col >= 0 && col < 8
-      return true
-    else
-      return false
-    end
-    # An 8 by 8 board there should be 64 combinations of coordinates.
-  end
+    row.is_a?(Integer) && col.is_a?(Integer) && row.between?(1, 8) && col.between?(1, 8)
+  end  
 
 end
