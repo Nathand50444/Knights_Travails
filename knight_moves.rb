@@ -57,16 +57,22 @@
 
 class KnightMoves
   
-  def initialize(x_target, y_target) # x_start, y_start
-      valid_input?(x_target, y_target)
-      @current_position = [x_target, y_target]
+  def initialize(x_target, y_target, x_start, y_start)
+      @start_position = [x_start, y_start]
+      @target_position = [x_target, y_target]
   end
 
   ACCEPTABLE_MOVES = [[2,1], [2,-1], [-2,1], [-2,-1], [1,2], [-1,2], [1,-2], [-1,-2]]
 
   def move_to_target
-    within_board?(@current_position)
-
+    visited_positions = []
+    previous_position = {}
+    potential_moves = []
+    ACCEPTABLE_MOVES.each do |x, y| 
+      if valid_input?(@start_position[0] + x , @start_position[1] + y)
+        potential_moves.push([@start_position[0] + x , @start_position[1] + y])
+      end
+    end
   end
 
   def valid_input?(row, col)
