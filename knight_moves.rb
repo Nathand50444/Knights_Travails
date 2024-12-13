@@ -68,10 +68,18 @@ class KnightMoves
     visited_positions = []
     previous_position = {}
     potential_moves = []
+    queue = []
+
     ACCEPTABLE_MOVES.each do |x, y| 
       if valid_input?(@start_position[0] + x , @start_position[1] + y)
         potential_moves.push([@start_position[0] + x , @start_position[1] + y])
       end
+    end
+
+    visited_positions.push(potential_moves)
+    queue.push(potential_moves)
+    potential_moves.each do [move] 
+      previous_position.push(@start_position => move)
     end
   end
 
