@@ -1,4 +1,3 @@
-
   # For this project, you’ll need to use a data structure that’s similar (but not identical) to a binary tree - graphs.
   # For a good introduction on what graphs are, reference Khan Academy’s “Describing Graphs” (link below).
   # https://www.khanacademy.org/computing/computer-science/algorithms/graph-representation/a/describing-graphs
@@ -39,13 +38,7 @@
 # Establish acceptable moves from the knight by x and y values. Constant of 8 different steps /
 
 # Keep track of number of moves made 
-# Keep track of (current position)
-
-# Use a map to track visited/not visited squares
-
-# Use a queue of the visited nodes
-
-# Let the head be the top of the queue and remove it from the queue
+# Keep track of (current position) remove it from the queue
 
 # IF the head is the target coordinates then return the step
 
@@ -92,12 +85,12 @@ class KnightMoves
           # if the above are both true then we can add it to the queue, 'visited_positions' and the path is tracked in 'previous_position'
           queue.push(next_position) 
           visited_positions.push(next_position) 
-          previous_position[next_position] = current_position 
+          previous_position[next_position] = current_position
         end
       end
     end
 
-    # when the loop is broken the path is constructed from @start_position to @target_position
+    # When the loop is broken the path is constructed from @start_position to @target_position
     path = []
     current_position = @target_position
     
@@ -107,8 +100,12 @@ class KnightMoves
       current_position = previous_position[current_position]
     end
     
-    # The 'while' loop breaks and finally the @start_position is added to the path
+    # The 'while' loop breaks and the @start_position is added to the path
     path.unshift(@start_position)
+
+    # The final lines output the path that has been constructed
+    puts "You made it in #{path.length - 1} moves! Here's your path:"
+    path.each { |step| puts step.inspect }
     path
 
   end
