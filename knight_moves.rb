@@ -65,13 +65,17 @@ class KnightMoves
   ACCEPTABLE_MOVES = [[2,1], [2,-1], [-2,1], [-2,-1], [1,2], [-1,2], [1,-2], [-1,-2]]
 
   def move_to_target
+    # Establish variables for 'visited_positions', 'previous_position' and the BFS queue
     visited_positions = []
     previous_position = {}
     queue = []
-
+    
+    # We add the starting position to the BFS queue and to the 'visited_positions'
     queue.push(@start_position)
     visited_positions.push(@start_position)
 
+    # This 'until' loop controls the main logic of the search
+    # The search is broken if the queue is empty or if we arrive in the target position
     until queue.empty?
       current_position = queue.shift
       
@@ -79,16 +83,17 @@ class KnightMoves
         break
       end
   
-      ACCEPTABLE_MOVES.each do |x, y| 
-        if valid_input?(@start_position[0] + x , @start_position[1] + y)
-          potential_moves.push([@start_position[0] + x , @start_position[1] + y])
-        end
-      end
+    # The valid moves are established using the constant moves in relation to the current_position
+      ACCEPTABLE_MOVES.each do |x, y|
+        next_position = [current_position[0] + x, current_position[1] + y]
 
-      if valid_input?(next_position[0], next_position[1]) && !visited_positions.include?(next_position)
-        queue.push(next_position) 
-        visited_positions.push(next_position) 
-        previous_position[next_position] = current_position 
+        # The iterated move is checked to be within the board and checked whether it has already been visited.
+        if valid_input?(next_position[0], next_position[1]) && !visited_positions.include?(next_position)
+          # if the above are both true then we can add it to the queue, 'visited_positions' and the path is tracked in 'previous_position'
+          queue.push(next_position) 
+          visited_positions.push(next_position) 
+          previous_position[next_position] = current_position 
+        end
       end
     end
   end
