@@ -1,0 +1,45 @@
+# Knight's Travails
+
+## Overview
+
+Knight's Travails is a Ruby program that calculates the shortest path a knight can take to move between two positions on a standard 8x8 chessboard. The program uses the Breadth-First Search (BFS) algorithm to find the optimal path and outputs the sequence of moves the knight will make to reach the target position.
+
+## Features
+
+* Validates input positions to ensure they are within the bounds of a chessboard.
+
+* Implements the BFS algorithm to find the shortest path.
+
+* Tracks visited positions to avoid unnecessary computation.
+
+* Reconstructs and displays the path taken by the knight.
+
+## How to Run
+
+* Clone this repository or download the project files.
+
+* Open a terminal and navigate to the directory containing the knight_moves.rb file.
+
+* Run the program using the Ruby interpreter:
+
+ruby '/knight_moves.rb'
+
+* Modify the starting and target positions in the code to test different scenarios.
+
+## Usage
+
+* Given a starting position [0, 0] (bottom-left corner) and a target position [4, 3], the program will:
+
+1. Validate the input positions.
+
+2. Perform a BFS to find the shortest path.
+
+3. Output the moves and the number of steps taken.
+
+Output:
+
+You made it in 3 moves! Here's your path:
+[0, 0]
+[1, 2]
+[3, 3]
+[4, 3]
