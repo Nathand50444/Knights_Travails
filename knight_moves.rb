@@ -67,19 +67,29 @@ class KnightMoves
   def move_to_target
     visited_positions = []
     previous_position = {}
-    potential_moves = []
     queue = []
 
-    ACCEPTABLE_MOVES.each do |x, y| 
-      if valid_input?(@start_position[0] + x , @start_position[1] + y)
-        potential_moves.push([@start_position[0] + x , @start_position[1] + y])
-      end
-    end
+    queue.push(@start_position)
+    visited_positions.push(@start_position)
 
-    visited_positions.push(potential_moves)
-    queue.push(potential_moves)
-    potential_moves.each do [move] 
-      previous_position.push(@start_position => move)
+    until queue.empty?
+      current_position = queue.shift
+      
+      if current_position == @target_position
+        break
+      end
+  
+      ACCEPTABLE_MOVES.each do |x, y| 
+        if valid_input?(@start_position[0] + x , @start_position[1] + y)
+          potential_moves.push([@start_position[0] + x , @start_position[1] + y])
+        end
+      end
+
+      if valid_input?(next_position[0], next_position[1]) && !visited_positions.include?(next_position)
+        queue.push(next_position) 
+        visited_positions.push(next_position) 
+        previous_position[next_position] = current_position 
+      end
     end
   end
 
