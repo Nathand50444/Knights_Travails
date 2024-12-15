@@ -96,6 +96,21 @@ class KnightMoves
         end
       end
     end
+
+    # when the loop is broken the path is constructed from @start_position to @target_position
+    path = []
+    current_position = @target_position
+    
+    # Using a 'while' loop we can add the 'current_position' and iterate through all the hashes to piece together to path.
+    while current_position != @start_position
+      path.unshift(current_position) 
+      current_position = previous_position[current_position]
+    end
+    
+    # The 'while' loop breaks and finally the @start_position is added to the path
+    path.unshift(@start_position)
+    path
+
   end
 
   def valid_input?(row, col)
